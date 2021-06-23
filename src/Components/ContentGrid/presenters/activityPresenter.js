@@ -6,6 +6,7 @@ class ActivityPresenter{
     onAddNewActivity(){
         if(activitiesHolderModel.isLastActivityOngoing()){
             activitiesHolderModel.finishActivity();
+            statisticsModel.computeStatistics(activitiesHolderModel.state.activities);
         }
         activitiesHolderModel.addNewActivity(activityModel.state.activityName);
         activityModel.clearNewActivity();
