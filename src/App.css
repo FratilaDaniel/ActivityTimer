@@ -131,15 +131,34 @@ body{
     
 }
 
-.table-container{
-    grid-area: statistics;
-    background-color: blanchedalmond;
 
-    
+
+
+
+table :not(h1){
+    border: 2px solid black;
+    font-size: 1.1em;
 }
+
+
 
 .schedule-container{
     grid-area: schedule;
+    outline: 2px solid red;
+    text-align: center;
 }
+
+
+
+.table-container{
+    grid-area: statistics;
+    background-color: blanchedalmond;
+    outline: 2px solid blue;
+}
+
+.table-container h1{
+    text-align: center;
+}
+
 
 /* content grid end */

@@ -1,13 +1,23 @@
-import ActivityInput from "./ActivityInput";
-import Table from "./Table";
+import SmartActivityInput from "./ActivityInput/SmartActivityInput";
+import Table from "./Table/Table";
 import Graph from "./Graph";
 
 function ContentGrid(props){
+    const scheduleHead = ["Number", "Activity", "Status", "Duration", "Start time", "End time"];
+    const statisticsHead = ["Number", "Activity", "Duration"];
     return (
         <div className="grid-container">
-            <ActivityInput/>
-            <Table role="schedule"/>
-            <Table role="statistics"/>
+            <SmartActivityInput/>
+            <Table 
+                tableHead={scheduleHead} 
+                role="Schedule"
+                className="schedule-container"
+                />
+            <Table 
+                tableHead={statisticsHead} 
+                role="Statistics"
+                className="table-container" 
+                />
             <Graph/>
         </div>
     );
