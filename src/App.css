@@ -150,7 +150,7 @@ table :not(h1){
 
 
 
-.table-container{
+.statistics-container{
     grid-area: statistics;
     background-color: blanchedalmond;
     outline: 2px solid blue;

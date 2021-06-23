@@ -45,7 +45,7 @@ class ActivitiesHolderModel extends EventEmitter{
         this.emit("change", this.state);
     }
 
-    // change certain activity
+    // change (rename) certain activity
 
 
 }

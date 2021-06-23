@@ -1,5 +1,6 @@
 import activityModel from "../models/activityModel";
 import activitiesHolderModel from "../models/activitiesHolderModel";
+import statisticsModel from "../models/statisticsModel";
 
 class ActivityPresenter{
     onAddNewActivity(){
@@ -13,6 +14,7 @@ class ActivityPresenter{
     onFinishActivity(){
         if(activitiesHolderModel.isLastActivityOngoing()){
             activitiesHolderModel.finishActivity();
+            statisticsModel.computeStatistics(activitiesHolderModel.state.activities);
         }
     }
 
