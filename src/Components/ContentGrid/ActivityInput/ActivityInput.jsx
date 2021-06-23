@@ -1,5 +1,5 @@
 
-function ActivityInput({activity, onChangeActivity, onAddActivity}) {
+function ActivityInput({activity, onChangeActivity, onAddActivity, onFinishActivity}) {
     return (
         <div className="grid-cell-container activity-grid-cell">
             <div className="activity-input-container">
@@ -13,7 +13,9 @@ function ActivityInput({activity, onChangeActivity, onAddActivity}) {
                 <button 
                     className="btn"
                     onClick={onAddActivity}>Start activity</button>
-                <button className="btn">Stop activity</button>
+                <button 
+                    className="btn"
+                    onClick={onFinishActivity}>Finish activity</button>
             </div>
         </div>
     );

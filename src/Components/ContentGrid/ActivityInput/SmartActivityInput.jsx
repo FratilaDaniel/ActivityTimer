@@ -1,12 +1,11 @@
 import React from "react";
-import activityModel from "./activityModel";
-import activityPresenter from "./activityPresenter";
+import activityModel from "../models/activityModel";
+import activityPresenter from "../presenters/activityPresenter";
 import ActivityInput from "./ActivityInput";
 
 function mapStateToComponent(state){
     return {
-        data: state.data,
-        activity: state.newActivity.activity
+        activity: state.activityName
     };
 }
 
@@ -32,6 +31,7 @@ class SmartActivityInput extends React.Component{
                 activity={this.state.activity}
                 onChangeActivity={activityPresenter.onChangeNewActivity}
                 onAddActivity={activityPresenter.onAddNewActivity}
+                onFinishActivity={activityPresenter.onFinishActivity}
             />
         );
     }

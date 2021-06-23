@@ -1,5 +1,5 @@
 
-function Table({tableHead, role, ...cellProps}){
+function Table({tableHead, tableData, role, ...cellProps}){
     return (
         <div {...cellProps}>
             <h1>{role}</h1>
@@ -10,11 +10,15 @@ function Table({tableHead, role, ...cellProps}){
                 })}
                 </thead>
                 <tbody>
-                    <tr>
-                        <td>1</td>
-                        <td>2</td>
-                        <td>3</td>
-                    </tr>
+                {tableData.map(row => {
+                    return (
+                        <tr>
+                            {Object.keys(row).map(key => {
+                                return <td>{row[key]}</td>
+                            })
+                            }
+                        </tr>)
+                })}
                 </tbody>
             </table>
         </div>

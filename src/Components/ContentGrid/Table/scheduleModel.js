@@ -1,34 +1,20 @@
+import {EventEmitter} from "events";
+
 // class that holds all information regarding
 // user's activities, past and ongoing 
-class ScheduleModel{
+class ScheduleModel extends EventEmitter{
     constructor(){
+        super();
         this.state = {
-            data: [],
-            newData: {
-                number: "",
-                activity: "",
-                status: "",
-                duration: "",
-                startTime: "",
-                endTime: "",
-            },
+            scheduleHead: ["Number", "Activity", "Status", "Duration", "Start time", "End time"],
+            data: []
         };
     }
 
-    addData(){
+    addData(newData){
         this.state = {
             ...this.state,
-            data: this.state.data.concat(this.state.newData)
-        };
-    }
-
-    changeNewDataProperty(property, value){
-        this.state = {
-            ...this.state,
-            newData:{
-                ...this.state.newData,
-                [property]: value
-            }
+            data: this.state.data.concat(newData)
         };
     }
 }
