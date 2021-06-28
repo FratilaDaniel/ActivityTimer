@@ -127,7 +127,7 @@ body{
 
 .graph-container{
     grid-area: graph;
-    background-color: chocolate;
+    border: 2px solid chocolate;
     
 }
 

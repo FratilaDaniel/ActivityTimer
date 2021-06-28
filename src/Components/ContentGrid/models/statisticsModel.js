@@ -42,17 +42,18 @@ class StatisticsModel extends EventEmitter{
         });
         let statistics = [];
         this.state.activitiesMap.forEach((value, key) => {
-            statistics.push({
-                acitivity: key,
-                durationSeconds: value,
-                durationPercentage: value / totalDuration 
-            });
+            if(value > 0){
+                statistics.push({
+                    activity: key,
+                    durationSeconds: value,
+                    durationPercentage: (100 * value / totalDuration).toFixed(2) 
+                });
+            }
         });
         this.state = {
             ...this.state,
             statistics: statistics
         };
-        console.log(this.state.statistics);
         this.emit("change", this.state);
     }
 }
