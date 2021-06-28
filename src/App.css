@@ -6,13 +6,29 @@
     --light-placeholder-color: rgba(230, 244, 241, 0.3);
     --mid-dark-blue: #005468;
     --dark-blue: #002435;
-    --dark-blue-transparent: rgba(0, 35, 51, 0.40);
-    
+    --dark-blue-transparent: rgba(0, 35, 51, 0.4);
+    box-sizing: border-box;
 }
 
-body{
-    background-color: grey;   
+html, body, #root{
+    height: 100%;
 }
+
+h1{
+    text-align: center;
+}
+
+th, td{
+    word-wrap: break-word;
+}
+
+.general-container{
+    display: flex;
+    flex-flow: column;
+    justify-content: space-between;
+    min-height: 100%;
+}
+
 
 /* navbar start */
 .navbar-container{
@@ -66,30 +82,40 @@ body{
 /* navbar end */
 
 
-/* content grid start */
-.grid-container{
-    background-color: beige;
-    display: grid;
-    row-gap: 10px;
-    width: 100%;
-    grid-template-areas: 
-        "activity-name graph"
-        "schedule statistics"
-    ;
-    grid-template-columns: 50% 50%;
-    justify-items: center;
-    align-items: center;
-    grid-template-rows: 240px 240px;
+
+
+/* content start */
+.content-container{
+    display: flex;
+    flex-flow: column;
+    flex: 1;
+    margin: 0 5% 0 5%;
 }
 
+.top-flex{
+    display: flex;
+    border: 2px solid red;
+    align-items: center;
+    padding: 10px 0 10px 0;
+}
+
+.bot-flex{
+    display: flex;
+    border: 2px solid blue;
+    padding: 10px 0 10px 0;
+}
+
+
+
+
 .activity-input-container{
-    grid-area: activity-name;
+    width: 70%;
     text-align: center;
 }
 
 .activity-input{
     font-size: 3rem;
-    width: 100%;
+    width: 70%;
     box-sizing: border-box;
     text-align: center;
     margin-top: 10px;
@@ -126,9 +152,8 @@ body{
 }
 
 .graph-container{
-    grid-area: graph;
-    border: 2px solid chocolate;
-    
+    width: 20%;
+    text-align: center;
 }
 
 
@@ -140,25 +165,52 @@ table :not(h1){
     font-size: 1.1em;
 }
 
+table{
+    table-layout: fixed;
+    width: 80%;
+    margin: 0 auto 0 auto;
+}
+
+
 
 
 .schedule-container{
-    grid-area: schedule;
-    outline: 2px solid red;
+    width: 70%;
     text-align: center;
 }
 
+.schedule-table-container{
+    width: 100%;
+}
 
 
 .statistics-container{
-    grid-area: statistics;
-    background-color: blanchedalmond;
-    outline: 2px solid blue;
-}
-
-.table-container h1{
+    width: 20%;
     text-align: center;
 }
 
+.statistics-table-container{
+    width: 100%;
+}
 
-/* content grid end */
+
+/* content end */
+
+
+
+
+
+
+/* footer start */
+.footer-container{
+    background-color: var(--navbar-footer-background-color);
+    flex: 0;
+    padding: 0.5% 0;
+}
+
+
+/* footer end */
+
+
+
+

@@ -27,12 +27,17 @@ class SmartStatistics extends React.Component{
 
     render(){
         return (
-            <Table 
-                tableHead={this.state.tableHead}
-                tableData={this.state.tableData}
-                role="Statistics"
-                className="statistics-container"
-            />
+            <div className="statistics-container">
+                <h1>Statistics</h1>
+                {statisticsModel.state.statistics.length 
+                ? <Table 
+                    tableHead={this.state.tableHead}
+                    tableData={this.state.tableData}
+                    className="statistics-table-container"
+                />
+                :  "Complete an activity to view statistics"
+                }
+            </div>
         );
     }
 }

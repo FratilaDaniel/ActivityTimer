@@ -4,18 +4,22 @@ import statisticsModel from "../models/statisticsModel";
 
 class ActivityPresenter{
     onAddNewActivity(){
-        if(activitiesHolderModel.isLastActivityOngoing()){
-            activitiesHolderModel.finishActivity();
-            statisticsModel.computeStatistics(activitiesHolderModel.state.activities);
+        if(activityModel.state.activityName){
+            if(activitiesHolderModel.isLastActivityOngoing()){
+                activitiesHolderModel.finishActivity();
+                statisticsModel.computeStatistics(activitiesHolderModel.state.activities);
+            }
+            activitiesHolderModel.addNewActivity(activityModel.state.activityName);
+            activityModel.clearNewActivity();
         }
-        activitiesHolderModel.addNewActivity(activityModel.state.activityName);
-        activityModel.clearNewActivity();
+
     }
 
     onFinishActivity(){
         if(activitiesHolderModel.isLastActivityOngoing()){
             activitiesHolderModel.finishActivity();
             statisticsModel.computeStatistics(activitiesHolderModel.state.activities);
+            activityModel.clearNewActivity();
         }
     }
 

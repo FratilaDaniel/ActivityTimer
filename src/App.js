@@ -1,7 +1,7 @@
 import './App.css';
 import Navbar from "./Components/Navbar/Navbar.jsx";
 import ContentGrid from "./Components/ContentGrid/ContentGrid";
-
+import Footer from "./Components/Footer/Footer";
 
 function App() {
     return (
@@ -11,6 +11,7 @@ function App() {
             {/* content grid*/}
             <ContentGrid/>
             {/* footer */}
+            <Footer/>
         </div>
     );
 }

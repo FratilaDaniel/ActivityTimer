@@ -27,12 +27,17 @@ class SmartSchedule extends React.Component{
 
     render(){
         return (
-            <Table
-                tableHead={this.state.tableHead}
-                tableData={this.state.tableData}
-                role="Schedule"
-                className="schedule-container"
-            />
+            <div className="schedule-container">
+            <h1>Schedule</h1>
+            {activitiesHolderModel.state.activities.length
+                ? <Table
+                    tableHead={this.state.tableHead}
+                    tableData={this.state.tableData}
+                    className="schedule-table-container"
+                />
+                : "Start an activity to view activity history"
+            }
+            </div>
         );
     }
 }

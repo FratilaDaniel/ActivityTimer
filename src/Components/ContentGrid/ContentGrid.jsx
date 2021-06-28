@@ -5,11 +5,15 @@ import SmartChart from "./Chart/SmartChart";
 
 function ContentGrid() {
     return (
-        <div className="grid-container">
-            <SmartActivityInput/>
-            <SmartSchedule/>
-            <SmartStatistics/>
-            <SmartChart/>
+        <div className="content-container">
+            <div className="top-flex">
+                <SmartActivityInput/>
+                <SmartChart/>
+            </div>
+            <div className="bot-flex">
+                <SmartSchedule/>
+                <SmartStatistics/>
+            </div>   
         </div>
     );
 }

@@ -2,6 +2,18 @@ import {Doughnut} from "react-chartjs-2";
 import statisticsModel from "../models/statisticsModel";
 import React from "react";
 
+const emptyChartData = {
+    data: {
+        datasets: [{
+            data: [1],
+            borderWidth: 1,
+            backgroundColor: "rgba(0, 84, 104, 0.2)",
+            borderColor: "rgba(0, 84, 104, 1.0)"
+            },
+        ],
+    }
+};
+
 function mapComponentState(state){
     const labels = state.statistics.map(activity => {
         return activity.activity;
@@ -52,12 +64,13 @@ class SmartChart extends React.Component{
     }
 
     render(){
-        console.log(this.state.data)
         return (
             <div className="graph-container">
-                {this.state.data.labels.length ?
-                    <Doughnut data={this.state.data} options={{title:{display: true, text: "Activities"}}}/> :  
-                    "Insert an activity to get started"}
+                <h1>Chart</h1>
+                {this.state.data.labels.length
+                    ? <Doughnut data={this.state.data}/>
+                    : <Doughnut data={emptyChartData.data}/>
+                }
             </div>
         );
     }

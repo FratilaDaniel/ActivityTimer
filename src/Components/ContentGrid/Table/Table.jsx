@@ -1,8 +1,7 @@
 
-function Table({tableHead, tableData, role, ...cellProps}){
+function Table({tableHead, tableData, ...cellProps}){
     return (
         <div {...cellProps}>
-            <h1>{role}</h1>
             <table>
                 <thead>
                 {tableHead.map( (element) =>{
