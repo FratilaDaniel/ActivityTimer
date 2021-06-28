@@ -1,10 +1,18 @@
 import activityModel from "../models/activityModel";
 import activitiesHolderModel from "../models/activitiesHolderModel";
 import statisticsModel from "../models/statisticsModel";
+import {MAX_LENGTH} from "../models/activityModel";
 
 class ActivityPresenter{
     onAddNewActivity(){
-        if(activityModel.state.activityName){
+        // check empty activity
+        if(!activityModel.state.activityName){
+            activityModel.setActivityEmpty();
+        } // limit name length
+        else if (activityModel.state.activityName.length > MAX_LENGTH){
+            console.log("too long");
+        }
+        else{
             if(activitiesHolderModel.isLastActivityOngoing()){
                 activitiesHolderModel.finishActivity();
                 statisticsModel.computeStatistics(activitiesHolderModel.state.activities);
@@ -12,7 +20,6 @@ class ActivityPresenter{
             activitiesHolderModel.addNewActivity(activityModel.state.activityName);
             activityModel.clearNewActivity();
         }
-
     }
 
     onFinishActivity(){
