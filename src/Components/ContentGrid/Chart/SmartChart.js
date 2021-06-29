@@ -60,7 +60,7 @@ class SmartChart extends React.Component{
     }
 
     componentWillUnmount(){
-        statisticsModel.removeListener(this.listener);
+        statisticsModel.removeListener("change", this.listener);
     }
 
     render(){

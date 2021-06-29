@@ -4,7 +4,7 @@ import Table from "./Table";
 
 function mapStateToComponent(state){
     return {
-        tableHead: ["Activity", "Durations (sec)", "Duration (%)"],
+        tableHead: ["Activity", "Duration (sec)", "Duration (%)"],
         tableData: state.statistics 
     };    
 }
@@ -22,7 +22,7 @@ class SmartStatistics extends React.Component{
     }
 
     componentWillUnmount(){
-        statisticsModel.removeListener(this.listener);
+        statisticsModel.removeListener("change", this.listener);
     }
 
     render(){

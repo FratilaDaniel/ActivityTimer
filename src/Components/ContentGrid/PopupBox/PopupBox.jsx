@@ -1,5 +1,6 @@
 import React from "react";
-import activityModel from "../models/activityModel";
+import warningModel from "../models/warningModel";
+import activityPresenter from "../presenters/activityPresenter";
 import { MAX_LENGTH } from "../models/activityModel";
 import ErrorOutlineIcon from '@material-ui/icons/ErrorOutline';
 
@@ -10,19 +11,17 @@ const ERROR_MESSAGES = {
 
 function mapStateToComponent(state){
     return {
-        isNewActivity: state.isNew,
-        nameEmpty: state.nameEmpty,
-        nameTooLong: state.nameTooLong,
-        activityLength: state.activityName.length,
+        attemptAddEmptyActivity: state.attemptToAddEmpty,
+        attemptAddLongActivity: state.attemptToAddLong
     }
 }
 
 class PopupBox extends React.Component{
     constructor(){
         super();
-        this.state = mapStateToComponent(activityModel.state);
+        this.state =  mapStateToComponent(warningModel.state);
         this.listener = this.listener.bind(this);
-        activityModel.addListener("change", this.listener);
+        warningModel.addListener("change", this.listener);
     }
 
     listener(state){
@@ -30,36 +29,52 @@ class PopupBox extends React.Component{
     }
 
     componentWillUnmount(){
-        activityModel.removeListener(this.listener);
+        warningModel.removeListener("change", this.listener);
     }
+
+    // componentDidUpdate
 
     render(){
         let message = "";
-        let className = "warning-message-box"
-        // do not show warning if site just loaded 
-        // or an activity has just been submitted
-        if(this.state.isNewActivity){
-            // default (show no warning)
-                // className += "-inactive";
+        let className = "warning-message-box";
+
+        if(this.state.attemptAddEmptyActivity){
+            message = ERROR_MESSAGES.emptyActivity;
+        }
+        else if(this.state.attemptAddLongActivity){
+            message = ERROR_MESSAGES.tooLongActivity + activityPresenter.getActivityLength() + "/" + MAX_LENGTH;
+
+        }
+
+        // no warnings 
+        if(!this.state.attemptAddEmptyActivity && !this.state.attemptAddLongActivity){
+            className = "warning-message-box";
         }
         else{
-            if(this.state.nameEmpty && !this.state.isNewActivity){
-                message = ERROR_MESSAGES.emptyActivity;
-                className += "-active";
-            }
-            else if(this.state.nameTooLong){
-                message = ERROR_MESSAGES.tooLongActivity + this.state.activityLength + "/" + MAX_LENGTH + " characters";
-                className += "-active";
+            let els = document.getElementsByClassName(className);
+            if(els[0]){
+                className = "warning-message-box-active"; 
             }
             else{
-                className += "-inactive";
+                if(document.getElementsByClassName("warning-message-box-active")[0]){
+                    className = "warning-message-box-active2"; 
+                }
+                else{
+                    className = "warning-message-box-active"; 
+                }
+                
+
             }
         }
+
+        console.log(this.state, className);
+
+
         return (
             <div className="popup-container">
                 <div className={className}>
                     {message? <ErrorOutlineIcon fontSize="default"/>: null}
-                     {message}
+                    {message}
                 </div>                
             </div>
         );

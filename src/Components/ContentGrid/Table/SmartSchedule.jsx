@@ -4,7 +4,7 @@ import Table from "./Table";
 
 function mapStateToComponent(state){
     return {
-        tableHead: ["Number", "Activity", "Status", "Duration", "Start time", "End time"],
+        tableHead: ["Number", "Activity", "Status", "Duration (sec)", "Start time", "End time"],
         tableData: state.activities
     };
 }
@@ -22,7 +22,7 @@ class SmartSchedule extends React.Component{
     }
 
     componentWillUnmount(){
-        activitiesHolderModel.removeListener(this.listener);
+        activitiesHolderModel.removeListener("change", this.listener);
     }
 
     render(){

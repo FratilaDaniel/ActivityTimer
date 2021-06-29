@@ -32,31 +32,32 @@ th, td{
 
 
 
-.warning-message-box, .warning-message-box-active, .warning-message-box-inactive{
+.warning-message-box, .warning-message-box-active, .warning-message-box-active2{
+    padding: 15px 0;
     position: fixed;
     display: block;
     bottom: 0;
     left: 0;
     right: 0;
-    background-color: rgba(255, 255, 0, 0.2);
+    /* background-color: rgba(255, 255, 0, 0.2); */
+    background-color: blue;
     font-size: 2em;
     text-align: center;    
-    transform-origin: top;
+    transform-origin: bottom;
+    height: 4%;
     transform: scaleY(0);
-    color: red; /* ? */
+    color: orange; /* ? */
     display: none;
 }
 
 .warning-message-box-active{
     display: block;
     animation: popup-open 5s ease-in;
-    transform: scaleY(1);
 }
 
-.warning-message-box-inactive{
+.warning-message-box-active2{
     display: block;
-    animation: popup-close 5s ease-in;
-    transform: scaleY(1);
+    animation: popup-open 5s ease-in;
 }
 
 
@@ -64,19 +65,14 @@ th, td{
     0%{
         transform: scaleY(0);
     }
-    10%, 100%{
+    10%, 90%{
         transform: scaleY(1);
     }
-}
-
-@keyframes popup-close {
-    0%{
-        transform: scaleY(1);
-    }
-    10%, 100%{
+    100%{
         transform: scaleY(0);
     }
 }
+
 
 /* navbar start */
 .navbar-container{

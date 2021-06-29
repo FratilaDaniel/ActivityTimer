@@ -7,24 +7,14 @@ class ActivityModel extends EventEmitter{
     constructor(){
         super();
         this.state = {
-            isNew: true,
             nameEmpty: true,
             nameTooLong: false,
             activityName: "",
         };
     }
 
-    setIsNewActivityFalse(){
-        this.state = { 
-            ...this.state,
-            isNew: false,
-        };
-        this.emit("change", this.state);
-    }
-
     clearNewActivity(){
         this.state = { 
-            isNew: true,
             nameEmpty: true, 
             nameTooLong: false, 
             activityName: "",
@@ -43,7 +33,6 @@ class ActivityModel extends EventEmitter{
             valueTooLong = true;
         }
         this.state = {
-            isNew: false,
             activityName: value, 
             nameEmpty: nameEmpty,
             nameTooLong: valueTooLong

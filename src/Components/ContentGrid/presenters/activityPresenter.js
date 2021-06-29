@@ -1,16 +1,19 @@
 import activityModel from "../models/activityModel";
 import activitiesHolderModel from "../models/activitiesHolderModel";
 import statisticsModel from "../models/statisticsModel";
+import warningModel from "../models/warningModel";
 import {MAX_LENGTH} from "../models/activityModel";
 
 class ActivityPresenter{
+    // on click "start activity"
     onAddNewActivity(){
-        activityModel.setIsNewActivityFalse();
         if(activityModel.state.nameEmpty){
             // empty activity name (or whitespaces only), raise warning
+            warningModel.onAttemptToAddEmpty();
         } 
         else if (activityModel.state.activityName.length > MAX_LENGTH){
             // activity name too long, raise warning
+            warningModel.onAttemptToAddLong();
         }
         else{
             if(activitiesHolderModel.isLastActivityOngoing()){
@@ -19,6 +22,7 @@ class ActivityPresenter{
             }
             activitiesHolderModel.addNewActivity(activityModel.state.activityName.trim());
             activityModel.clearNewActivity();
+            warningModel.resetFields();
         }
     }
 
@@ -27,11 +31,19 @@ class ActivityPresenter{
             activitiesHolderModel.finishActivity();
             statisticsModel.computeStatistics(activitiesHolderModel.state.activities);
             activityModel.clearNewActivity();
+            warningModel.resetFields();
         }
+    }
+
+    getActivityLength(){
+        return activityModel.state.activityName.length;
     }
 
     onChangeNewActivity(value){
         activityModel.changeNewActivity(value);
+        if (activityModel.state.activityName.length > MAX_LENGTH){
+            warningModel.onAttemptToAddLong();
+        }
     }
 }
 
