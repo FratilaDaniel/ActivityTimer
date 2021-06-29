@@ -2,40 +2,51 @@ import {EventEmitter} from "events";
 
 // class that is responsible for creating a new activity
 class ActivityModel extends EventEmitter{
-    static MAX_LENGTH = 20;
+    static MAX_LENGTH = 16;
         
     constructor(){
         super();
         this.state = {
-            nameEmpty: false,
+            isNew: true,
+            nameEmpty: true,
             nameTooLong: false,
             activityName: "",
         };
     }
 
-    clearNewActivity(){
-        this.state = {activityName: ""};
-        this.emit("change", this.state);
-    }
-
-    changeNewActivity(value){
-        let valuetTooLong = false;
-        console.log(value.length, ActivityModel.MAX_LENGTH)
-        if(value.length > ActivityModel.MAX_LENGTH){
-            valuetTooLong = true;
-        }
-        this.state = {
-            activityName: value, 
-            nameEmpty: false,
-            nameTooLong: valuetTooLong
+    setIsNewActivityFalse(){
+        this.state = { 
+            ...this.state,
+            isNew: false,
         };
         this.emit("change", this.state);
     }
 
-    setActivityEmpty(){
+    clearNewActivity(){
+        this.state = { 
+            isNew: true,
+            nameEmpty: true, 
+            nameTooLong: false, 
+            activityName: "",
+        };
+        this.emit("change", this.state);
+    }
+
+    changeNewActivity(value){
+        const trimmedValue = value.trim();
+        let valueTooLong = false;
+        let nameEmpty = false;
+        if(trimmedValue === ""){ 
+            nameEmpty = true;
+        }
+        if(value.length > ActivityModel.MAX_LENGTH){
+            valueTooLong = true;
+        }
         this.state = {
-            ...this.state,
-            nameEmpty: true
+            isNew: false,
+            activityName: value, 
+            nameEmpty: nameEmpty,
+            nameTooLong: valueTooLong
         };
         this.emit("change", this.state);
     }

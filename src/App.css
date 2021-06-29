@@ -32,17 +32,16 @@ th, td{
 
 
 
-.warning-message-box, .warning-message-box-active{
+.warning-message-box, .warning-message-box-active, .warning-message-box-inactive{
     position: fixed;
     display: block;
-    top: 0;
+    bottom: 0;
     left: 0;
     right: 0;
     background-color: rgba(255, 255, 0, 0.2);
     font-size: 2em;
     text-align: center;    
     transform-origin: top;
-    animation: cardSwitch 5s 1;
     transform: scaleY(0);
     color: red; /* ? */
     display: none;
@@ -50,22 +49,34 @@ th, td{
 
 .warning-message-box-active{
     display: block;
-    animation: cardSwitch 5s ease-in;
-
+    animation: popup-open 5s ease-in;
+    transform: scaleY(1);
 }
 
-@keyframes cardSwitch {
+.warning-message-box-inactive{
+    display: block;
+    animation: popup-close 5s ease-in;
+    transform: scaleY(1);
+}
+
+
+@keyframes popup-open {
     0%{
         transform: scaleY(0);
     }
-    10%, 90%{
+    10%, 100%{
         transform: scaleY(1);
-    }
-    100%{
-        transform: scaleY(0);
     }
 }
 
+@keyframes popup-close {
+    0%{
+        transform: scaleY(1);
+    }
+    10%, 100%{
+        transform: scaleY(0);
+    }
+}
 
 /* navbar start */
 .navbar-container{
@@ -145,19 +156,6 @@ th, td{
     width: 70%;
     text-align: center;
 }
-
-
-/* .activity-input::before{
-    content: "aaaaaa";
-    display: block;
-    position: absolute;
-    top: 0;
-    left: 0;
-    height: 50px;
-    width: 50px;
-    background-color: blue;
-    color: red;
-} ??????*/
 
 .activity-input{
     font-size: 3rem;

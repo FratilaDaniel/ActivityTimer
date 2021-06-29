@@ -4,12 +4,13 @@ import { MAX_LENGTH } from "../models/activityModel";
 import ErrorOutlineIcon from '@material-ui/icons/ErrorOutline';
 
 const ERROR_MESSAGES = {
-    emptyActivity: "Activity empty",
+    emptyActivity: "Activity name cannot be empty",
     tooLongActivity: "Name too long: "
 }
 
 function mapStateToComponent(state){
     return {
+        isNewActivity: state.isNew,
         nameEmpty: state.nameEmpty,
         nameTooLong: state.nameTooLong,
         activityLength: state.activityName.length,
@@ -35,18 +36,30 @@ class PopupBox extends React.Component{
     render(){
         let message = "";
         let className = "warning-message-box"
-        if(this.state.nameEmpty){
-            message = ERROR_MESSAGES.emptyActivity;
-            className += "-active";
+        // do not show warning if site just loaded 
+        // or an activity has just been submitted
+        if(this.state.isNewActivity){
+            // default (show no warning)
+                // className += "-inactive";
         }
-        else if(this.state.nameTooLong){
-            message = ERROR_MESSAGES.tooLongActivity + this.state.activityLength + "/" + MAX_LENGTH + " characters";
-            className += "-active";
+        else{
+            if(this.state.nameEmpty && !this.state.isNewActivity){
+                message = ERROR_MESSAGES.emptyActivity;
+                className += "-active";
+            }
+            else if(this.state.nameTooLong){
+                message = ERROR_MESSAGES.tooLongActivity + this.state.activityLength + "/" + MAX_LENGTH + " characters";
+                className += "-active";
+            }
+            else{
+                className += "-inactive";
+            }
         }
         return (
             <div className="popup-container">
                 <div className={className}>
-                    <ErrorOutlineIcon fontSize="default"/> {message}
+                    {message? <ErrorOutlineIcon fontSize="default"/>: null}
+                     {message}
                 </div>                
             </div>
         );

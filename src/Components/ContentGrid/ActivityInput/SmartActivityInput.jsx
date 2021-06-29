@@ -31,9 +31,6 @@ class SmartActivityInput extends React.Component{
     }
 
     render() {
-        if(this.state.empty){
-            //placeholder = ERROR_MESSAGES.emptyActivity;
-        }
         return (
             <ActivityInput
                 activity={this.state.activity}

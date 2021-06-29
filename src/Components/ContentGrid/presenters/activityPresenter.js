@@ -5,19 +5,19 @@ import {MAX_LENGTH} from "../models/activityModel";
 
 class ActivityPresenter{
     onAddNewActivity(){
-        // check empty activity
-        if(!activityModel.state.activityName){
-            activityModel.setActivityEmpty();
-        } // limit name length
+        activityModel.setIsNewActivityFalse();
+        if(activityModel.state.nameEmpty){
+            // empty activity name (or whitespaces only), raise warning
+        } 
         else if (activityModel.state.activityName.length > MAX_LENGTH){
-            console.log("too long");
+            // activity name too long, raise warning
         }
         else{
             if(activitiesHolderModel.isLastActivityOngoing()){
                 activitiesHolderModel.finishActivity();
                 statisticsModel.computeStatistics(activitiesHolderModel.state.activities);
             }
-            activitiesHolderModel.addNewActivity(activityModel.state.activityName);
+            activitiesHolderModel.addNewActivity(activityModel.state.activityName.trim());
             activityModel.clearNewActivity();
         }
     }
