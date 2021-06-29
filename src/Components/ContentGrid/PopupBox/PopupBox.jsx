@@ -1,6 +1,7 @@
 import React from "react";
 import activityModel from "../models/activityModel";
 import { MAX_LENGTH } from "../models/activityModel";
+import ErrorOutlineIcon from '@material-ui/icons/ErrorOutline';
 
 const ERROR_MESSAGES = {
     emptyActivity: "Activity empty",
@@ -45,7 +46,7 @@ class PopupBox extends React.Component{
         return (
             <div className="popup-container">
                 <div className={className}>
-                    {message}
+                    <ErrorOutlineIcon fontSize="default"/> {message}
                 </div>                
             </div>
         );
