@@ -199,18 +199,33 @@ th, td{
 
 
 
-table :not(h1){
-    border: 2px solid black;
-    font-size: 1.1em;
-}
-
-table{
+table {
+    font-size: 1.3em;
+    border-collapse: collapse;
     table-layout: fixed;
     width: 80%;
     margin: 0 auto 0 auto;
 }
 
+th, td{
+    border: 2px solid black;
+}
 
+thead > *{
+    border-top: none;
+}
+
+th:first-child, td:first-child{
+    border-left: none;
+}
+
+th:last-child, td:last-child{
+    border-right: none;
+}
+
+tr:last-child td{
+    border-bottom: none;
+}
 
 
 .schedule-container{
