@@ -249,10 +249,25 @@ table{
 /* footer start */
 .footer-container{
     background-color: var(--navbar-footer-background-color);
-    flex: 0;
-    padding: 0.5% 0;
+    /* flex: 0; */
+    text-align: center;
 }
 
+
+.links-container {
+    margin-top: 10px;
+}
+
+.links-container a{
+    color: blue;
+    margin-left: 10px;
+    margin-right: 10px;
+}
+
+
+.credits{
+    font-size: 0.6em;
+}
 
 /* footer end */
 
