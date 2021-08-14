@@ -10,14 +10,17 @@ function ActivityInput({activity, onChangeActivity, onAddActivity, onFinishActiv
                 onChange={event => onChangeActivity(event.target.value)}
             />
                 
-            {showWarning? <Warning/> : null}
+            <Warning/>
 
-            <button 
-                className="btn"
-                onClick={onAddActivity}>Start activity</button>
-            <button 
-                className="btn"
-                onClick={onFinishActivity}>Finish activity</button>
+            <div id="buttons-container">
+                <button 
+                    className="btn"
+                    onClick={onAddActivity}>Start activity</button>
+                <button 
+                    className="btn"
+                    onClick={onFinishActivity}>Finish activity</button>
+            </div>
+
         </div>
     );
 }

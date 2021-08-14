@@ -40,7 +40,6 @@ class SmartActivityInput extends React.Component{
                 onChangeActivity={activityPresenter.onChangeNewActivity}
                 onAddActivity={activityPresenter.onAddNewActivity}
                 onFinishActivity={activityPresenter.onFinishActivity}
-                showWarning={true}
             />    
         );
     }
