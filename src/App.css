@@ -153,6 +153,11 @@ th, td{
         align-items: center;
     }
 
+    .schedule-container, .schedule-table-container,
+    .statistics-container, .statistics-table-container{
+        width: 100% !important;
+    }
+
     .activity-input{
         font-size: 2rem !important;
     }

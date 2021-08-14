@@ -8,9 +8,7 @@ function Navbar(props){
 
             <div className="menu-container">
                 <ul>
-                    <li><a href="/#">Contact</a></li>
-                    <li><a href="/#">Help</a></li>
-                    <li><a href="/#">Settings</a></li>
+                    <li><a href="https://daniel-fratila.herokuapp.com/">Contact</a></li>
                 </ul>
             </div>
         </div>
