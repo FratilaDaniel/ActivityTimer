@@ -4,20 +4,22 @@ function Table({tableHead, tableData, ...cellProps}){
         <div {...cellProps}>
             <table>
                 <thead>
-                {tableHead.map( (element) =>{
-                    return <th>{element}</th>
-                })}
+                    <tr>
+                        {tableHead.map( (element, index) =>{
+                            return <th key={index}>{element}</th>
+                        })}
+                    </tr>
                 </thead>
                 <tbody>
-                {tableData.map(row => {
-                    return (
-                        <tr>
-                            {Object.keys(row).map(key => {
-                                return <td>{row[key]}</td>
-                            })
-                            }
-                        </tr>)
-                })}
+                    {tableData.map((row, index) => {
+                        return (
+                            <tr key={index}>
+                                {Object.keys(row).map(key => {
+                                    return <td key={key}>{row[key]}</td>
+                                })
+                                }
+                            </tr>)
+                    })}
                 </tbody>
             </table>
         </div>

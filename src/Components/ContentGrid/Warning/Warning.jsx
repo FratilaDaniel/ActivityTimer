@@ -29,7 +29,6 @@ class Warning extends React.Component{
     }
 
     render(){
-        console.log(this.state.active);
         return (
             this.state.active 
             ? <div id="warning-container">

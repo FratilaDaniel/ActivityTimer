@@ -13,6 +13,9 @@ class SmartStatistics extends React.Component{
     constructor(){
         super();
         this.state = mapStateToComponent(statisticsModel.state);
+    }
+
+    componentDidMount(){
         this.listener = this.listener.bind(this);
         statisticsModel.addListener("change", this.listener);
     }

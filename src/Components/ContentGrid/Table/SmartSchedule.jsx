@@ -13,6 +13,9 @@ class SmartSchedule extends React.Component{
     constructor(){
         super();
         this.state = mapStateToComponent(activitiesHolderModel.state);
+    }
+
+    componentDidMount(){
         this.listener = this.listener.bind(this);
         activitiesHolderModel.addListener("change", this.listener);
     }

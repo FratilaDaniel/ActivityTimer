@@ -51,6 +51,9 @@ class SmartChart extends React.Component{
     constructor(){
         super();
         this.state = mapComponentState(statisticsModel.state);
+    }
+
+    componentDidMount(){
         this.listener = this.listener.bind(this);
         statisticsModel.addListener("change", this.listener);
     }
