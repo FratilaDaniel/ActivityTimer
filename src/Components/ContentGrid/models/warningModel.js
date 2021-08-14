@@ -1,5 +1,5 @@
 import {EventEmitter} from "events";
-import {MAX_LENGTH} from "../models/activityModel";
+import {MAX_LENGTH} from "./activityModel";
 
 class WarningModel extends EventEmitter{
     constructor(){

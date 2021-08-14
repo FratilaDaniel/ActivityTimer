@@ -1,5 +1,5 @@
 import React from "react";
-import activitiesHolderModel from "../models/activitiesHolderModel";
+import activitiesHolderModel from "../../models/activitiesHolderModel";
 import Table from "./Table";
 
 function mapStateToComponent(state){

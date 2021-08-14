@@ -1,6 +1,6 @@
 import React from "react";
-import activityModel from "../models/activityModel";
-import activityPresenter from "../presenters/activityPresenter";
+import activityModel from "../../models/activityModel";
+import activityPresenter from "../../presenters/activityPresenter";
 import ActivityInput from "./ActivityInput";
 
 function mapStateToComponent(state){

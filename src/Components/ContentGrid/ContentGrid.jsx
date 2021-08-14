@@ -1,7 +1,7 @@
-import SmartActivityInput from "./ActivityInput/SmartActivityInput";
-import SmartSchedule from "./Table/SmartSchedule";
-import SmartStatistics from "./Table/SmartStatistics";
-import SmartChart from "./Chart/SmartChart";
+import SmartActivityInput from "./views/ActivityInput/SmartActivityInput";
+import SmartSchedule from "./views/Table/SmartSchedule";
+import SmartStatistics from "./views/Table/SmartStatistics";
+import SmartChart from "./views/Chart/SmartChart";
 
 function ContentGrid() {
     return (

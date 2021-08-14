@@ -1,5 +1,5 @@
 import {Doughnut} from "react-chartjs-2";
-import statisticsModel from "../models/statisticsModel";
+import statisticsModel from "../../models/statisticsModel";
 import React from "react";
 
 const emptyChartData = {

@@ -1,7 +1,6 @@
-import "./warning.css";
 import ErrorOutlineIcon from '@material-ui/icons/ErrorOutline';
 import React from "react";
-import warningModel from "../models/warningModel";
+import warningModel from "../../models/warningModel";
 
 class Warning extends React.Component{
     constructor(props){

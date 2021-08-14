@@ -1,5 +1,5 @@
 import React from "react";
-import statisticsModel from "../models/statisticsModel";
+import statisticsModel from "../../models/statisticsModel";
 import Table from "./Table";
 
 function mapStateToComponent(state){
