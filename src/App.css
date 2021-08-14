@@ -152,6 +152,14 @@ th, td{
         flex-direction: column;
         align-items: center;
     }
+
+    .activity-input{
+        font-size: 2rem !important;
+    }
+
+    .btn{
+        font-size: 1.15em !important;
+    }
 }
 
 
