@@ -1,54 +1,53 @@
 import {EventEmitter} from "events";
+import {MAX_LENGTH} from "../models/activityModel";
 
 class WarningModel extends EventEmitter{
     constructor(){
         super();
         this.state = {
-            attemptToAddEmpty: 0,
-            attemptToAddLong: 0
+            attemptToAddEmpty: false,
+            attemptToAddLong: false
         };
     }
 
     resetFields(){
         this.state = {
-            attemptToAddEmpty: 0,
-            attemptToAddLong: 0
-        }
-        this.emit("change", this.state);
+            attemptToAddEmpty: false,
+            attemptToAddLong: false
+        };
+        this.emit("warningChange");
     }
 
     resetAttemptToAddEmpty(){
         this.state = {
             ...this.state,
-            attemptToAddEmpty: 0
+            attemptToAddEmpty: false
         };
-        this.emit("change", this.state);
-    }
-    
-    resetAttemptToAddLong(){
-        this.state = {
-            ...this.state,            
-            attemptToAddLong: 0
-        };
-        this.emit("change", this.state);
+        this.emit("warningChange");
     }
 
     onAttemptToAddEmpty(){
-        const oldVal = this.state.attemptToAddEmpty;
         this.state = {
             ...this.state,
-            attemptToAddEmpty: oldVal + 1
+            attemptToAddEmpty: true
         };
-        this.emit("change", this.state);
+        this.emit("warningChange", "Activity name cannot be empty");
     }
-    
+
+    resetAttemptToAddLong(){
+        this.state = {
+            ...this.state,            
+            attemptToAddLong: false
+        };
+        this.emit("warningChange", this.state);
+    }
+
     onAttemptToAddLong(){
-        const oldVal = this.state.attemptToAddLong;
         this.state = {
             ...this.state,
-            attemptToAddLong: oldVal + 1
+            attemptToAddLong: true
         };
-        this.emit("change", this.state);
+        this.emit("warningChange", `Activity name too long, max ${MAX_LENGTH} characters`);
     }
 }
 

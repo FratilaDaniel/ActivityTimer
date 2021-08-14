@@ -1,5 +1,6 @@
+import Warning from "../Warning/Warning";
 
-function ActivityInput({activity, onChangeActivity, onAddActivity, onFinishActivity}) {
+function ActivityInput({activity, onChangeActivity, onAddActivity, onFinishActivity, showWarning}) {
     return (
         <div className="activity-input-container">
             <input 
@@ -8,7 +9,9 @@ function ActivityInput({activity, onChangeActivity, onAddActivity, onFinishActiv
                 value={activity}
                 onChange={event => onChangeActivity(event.target.value)}
             />
-            <br/>
+                
+            {showWarning? <Warning/> : null}
+
             <button 
                 className="btn"
                 onClick={onAddActivity}>Start activity</button>

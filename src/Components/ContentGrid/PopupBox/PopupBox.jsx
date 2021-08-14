@@ -67,9 +67,6 @@ class PopupBox extends React.Component{
             }
         }
 
-        console.log(this.state, className);
-
-
         return (
             <div className="popup-container">
                 <div className={className}>

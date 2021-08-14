@@ -18,6 +18,9 @@ class SmartActivityInput extends React.Component{
             ...this.state, 
             empty: false
         }
+    }
+
+    componentDidMount(){
         this.listener = this.listener.bind(this);
         activityModel.addListener("change", this.listener);
     }
@@ -37,6 +40,7 @@ class SmartActivityInput extends React.Component{
                 onChangeActivity={activityPresenter.onChangeNewActivity}
                 onAddActivity={activityPresenter.onAddNewActivity}
                 onFinishActivity={activityPresenter.onFinishActivity}
+                showWarning={true}
             />    
         );
     }

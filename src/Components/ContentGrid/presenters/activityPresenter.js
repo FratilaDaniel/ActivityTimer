@@ -40,9 +40,18 @@ class ActivityPresenter{
     }
 
     onChangeNewActivity(value){
+        // reset attempt to add empty activity if present
+        if(warningModel.state.attemptToAddEmpty){
+            warningModel.resetAttemptToAddEmpty();
+        }
+        // change the new activity name
         activityModel.changeNewActivity(value);
+        // raise warning if new name is too long, else reset warning
         if (activityModel.state.activityName.length > MAX_LENGTH){
             warningModel.onAttemptToAddLong();
+        }
+        else{
+            warningModel.resetAttemptToAddLong();
         }
     }
 }
