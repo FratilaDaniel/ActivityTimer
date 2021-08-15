@@ -10,6 +10,10 @@
     box-sizing: border-box;
 }
 
+body{
+    background-color: rgba(100, 99, 99, 0.3);
+}
+
 html, body, #root{
     height: 100%;
 }
@@ -83,7 +87,7 @@ th, td{
 }
 
 .logo-container{
-    color: white;
+    color: #EEE8A9;
     margin-left: 1em;
 }
 
